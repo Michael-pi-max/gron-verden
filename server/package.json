@@ -1,0 +1,42 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "a backend for gron-verden",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "server": "nodemon server.js --exec babel-node --presets babel-preset-env",
+    "start": "node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michael-pi-max/gron-verden.git"
+  },
+  "author": "Michael Solomon and Semere Talegngeta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michael-pi-max/gron-verden/issues"
+  },
+  "homepage": "https://github.com/Michael-pi-max/gron-verden#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.9"
+  }
+}
