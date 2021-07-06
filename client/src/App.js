@@ -1,21 +1,26 @@
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from './redux/actions';
+import Registration from './Pages/auth/Registration';
+import Login from './Pages/auth/Login';
+import Home from './Pages/Home';
+
 
 function App() {
-  const counter = useSelector(state => state.counter);
-  const isLogged = useSelector(state => state.isLogged);
+  // const counter = useSelector(state => state.counter);
+  // const isLogged = useSelector(state => state.isLogged);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
+    
     <div className="App">
-       <h1>Counter : {counter}</h1>
-       <button onClick={() => dispatch(increment())}>+</button>
-       <button onClick={() => dispatch(decrement())}>-</button>
 
-       {isLogged ? <h3>Valuable Information that is private</h3> : ''}
-        
+      <Switch>
+        <Route exact path="/auth/register" component={Registration} />
+        <Route exact path="/auth/login" component={Login} />
+        <Route exact path="/home" component={Home} />
+        <Redirect to="/auth/login" />
+      </Switch>
     </div>
   );
 }
