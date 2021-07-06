@@ -7,8 +7,8 @@
     "client-install": "npm install --prefix client",
     "server": "nodemon src/index.js --exec babel-node --presets babel-preset-env",
     "start": "node src/index.js",
-    "client": "npm start --prefix ../client/src/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\" "
+    "client": "cd ../ && npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
