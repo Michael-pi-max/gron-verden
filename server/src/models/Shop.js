@@ -24,6 +24,14 @@ const ShopSchema = new schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'user',
 		},
+		shopProducts: {
+			plants: [
+				{
+					type: mongoose.Schema.Types.ObjectId,
+					ref: 'plant',
+				},
+			],
+		},
 	},
 	{
 		timestamps: true,
