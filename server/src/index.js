@@ -12,6 +12,8 @@ const app = express();
 
 // Importing routes
 const userRouter = require('./routes/user');
+const plantRouter = require('./routes/plant');
+// const shopRouter = require('./routes/')
 
 // Connecting to database
 mongoose
@@ -33,10 +35,9 @@ if (process.env.NODE_ENV == 'development') {
 app.use(cors());
 app.use(express.json());
 
-
 // Routing middleware
 app.use('/api/v1/users', userRouter);
-
+app.use('/api/v1/plants', plantRouter);
 
 app.listen(process.env.PORT, () => {
 	console.log(`listening to port ${process.env.PORT}`.yellow.bold);
