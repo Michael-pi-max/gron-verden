@@ -59,7 +59,18 @@ exports.register = async (req, res, next) => {
         message: errors.array()[0].msg,
       });
     }
-    const { email } = req.body;
+    const {
+      firstName,
+      lastName,
+      userName,
+      gender,
+      dateOfBirth,
+      email,
+      password,
+      userRole,
+      phoneNumber,
+      city,
+    } = req.body;
     // check if email already exists
     User.findOne({ email: email })
       .then((user) => {
@@ -68,13 +79,25 @@ exports.register = async (req, res, next) => {
         } else {
           // Creates a user from the req.body
           console.log(req.file);
-          // User.create(req.body).then((user) => {
-          //   res.status(201).json({
-          //     status: 'success',
-          //     token: getToken(User._id),
-          //     user,
-          //   });
-          // });
+          User.create({
+            firstName,
+            lastName,
+            userName,
+            gender,
+            dateOfBirth,
+            profilePicture: req.file.path,
+            email,
+            password,
+            userRole,
+            phoneNumber,
+            city,
+          }).then((user) => {
+            res.status(201).json({
+              status: 'success',
+              token: getToken(User._id),
+              user,
+            });
+          });
         }
       })
       .catch((err) => {
@@ -110,7 +133,8 @@ exports.editUserData = async (req, res, next) => {
         message: errors.array()[0].msg,
       });
     }
-    const { firstName, lastName, email } = req.body;
+    const { firstName, lastName, email, userName, phoneNumber, city } =
+      req.body;
 
     User.findOneAndUpdate(
       { _id: mongoose.Types.ObjectId(req.user_id) },
@@ -118,6 +142,10 @@ exports.editUserData = async (req, res, next) => {
         firstName,
         lastName,
         email,
+        userName,
+        profilePicture: req.file.path,
+        phoneNumber,
+        city,
       },
       {
         new: true,
