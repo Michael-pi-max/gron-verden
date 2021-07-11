@@ -122,15 +122,17 @@ exports.getSingleShop = async (req, res, next) => {
 };
 
 exports.deleteSingleShop = async (req, res, next) => {
-  // const user = User.findOne({ _id: mongoose.Types.ObjectId(req.user_id) });
-  // if (user.userRole == 'provider') {
-  //   // Changing the userRole to user
-  //   await User.findOneAndUpdate(
-  //     { _id: mongoose.Types.ObjectId(req.user_id) },
-  //     { userRole: 'user' },
-  //     { new: true }
-  //   );
-  // }
+  const user = await User.findOne({
+    _id: mongoose.Types.ObjectId(req.user_id),
+  });
+  if (user.userRole == 'provider') {
+    // Changing the userRole to user
+    await User.findOneAndUpdate(
+      { _id: mongoose.Types.ObjectId(req.user_id) },
+      { userRole: 'user' },
+      { new: true }
+    );
+  }
   // Checking if the user is in the shopOwner list
 
   Shop.findOne({ _id: req.params.shop_id })

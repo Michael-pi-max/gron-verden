@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const schema = mongoose.Schema;
 
-/**
- * Schema for storing user
- * Email - user email
- * Password - user password
- */
 
 const UserSchema = new schema(
   {

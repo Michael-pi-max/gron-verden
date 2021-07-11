@@ -15,6 +15,7 @@ const getToken = (id) => {
   );
 };
 
+// Login controller
 exports.login = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -48,6 +49,7 @@ exports.login = async (req, res, next) => {
   } catch (err) {}
 };
 
+// Register controller
 exports.register = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -64,22 +66,24 @@ exports.register = async (req, res, next) => {
         if (user) {
           res.status(400).json({ error: 'Email already exists' });
         } else {
-          User.create(req.body).then((user) => {
-            res.status(201).json({
-              status: 'success',
-              token: getToken(User._id),
-              user,
-            });
-          });
-          //   const token = getToken(user._id);
+          // Creates a user from the req.body
+          console.log(req.file);
+          // User.create(req.body).then((user) => {
+          //   res.status(201).json({
+          //     status: 'success',
+          //     token: getToken(User._id),
+          //     user,
+          //   });
+          // });
         }
       })
       .catch((err) => {
-        res.status(404).json(err);
+        res.status(404).json({ error: "Can't register user" });
       });
   } catch (err) {}
 };
 
+// Get user data controller
 exports.getUserData = async (req, res, next) => {
   const errors = {};
 
@@ -96,6 +100,7 @@ exports.getUserData = async (req, res, next) => {
     );
 };
 
+// Edit user data controller
 exports.editUserData = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -105,8 +110,7 @@ exports.editUserData = async (req, res, next) => {
         message: errors.array()[0].msg,
       });
     }
-    const { firstName, lastName, email, password } = req.body;
-    console.log(req.user_id);
+    const { firstName, lastName, email } = req.body;
 
     User.findOneAndUpdate(
       { _id: mongoose.Types.ObjectId(req.user_id) },
@@ -131,12 +135,13 @@ exports.editUserData = async (req, res, next) => {
   } catch (err) {}
 };
 
+// Delete user data controller
 exports.deleteUserData = (req, res, next) => {
   User.findByIdAndDelete({ _id: mongoose.Types.ObjectId(req.user_id) })
     .then((user) => {
       res.status(200).json({ user });
     })
     .catch((err) => {
-      res.status(404).json({ error: 'cannot find the user' });
+      res.status(404).json({ error: "can't find user" });
     });
 };

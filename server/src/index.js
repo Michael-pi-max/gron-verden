@@ -34,6 +34,7 @@ if (process.env.NODE_ENV == 'development') {
 // middlewares
 app.use(cors());
 app.use(express.json());
+app.use(express.static('../../client/public'));
 
 // Routing middleware
 app.use('/api/v1/users', userRouter);
