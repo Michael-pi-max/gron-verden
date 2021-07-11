@@ -3,6 +3,7 @@ const User = require('../models/User');
 const mongoose = require('mongoose');
 const { validationResult } = require('express-validator');
 
+// Post new shop controller
 exports.postNewShop = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -13,15 +14,10 @@ exports.postNewShop = async (req, res, next) => {
       });
     }
 
-    const { shopName, shopDescription, shopLogo, startingHour, closingHour } =
-      req.body;
+    const { shopName, shopDescription, startingHour, closingHour } = req.body;
 
-    // Check if similar shopName exists
-    // console.log('AAAAAAAAA');
-    // const checkShop = await Shop.findOne({ shopName });
-    // console.log(checkShop.shopName + '/wa');
-
-    // Check if the user is already provider, if not create a shop
+    // Check if the user is already provider,
+    // if not create a shop
     const user = await User.findById({
       _id: mongoose.Types.ObjectId(req.user_id),
     });
@@ -29,10 +25,13 @@ exports.postNewShop = async (req, res, next) => {
       const shop = await Shop.create({
         shopName,
         shopDescription,
-        shopLogo,
+        shopLogo: req.file.path,
         startingHour,
         closingHour,
         shopOwner: req.user_id,
+        shopProducts: {
+          plants: [],
+        },
       });
 
       // Changing the userRole to provider
@@ -52,6 +51,7 @@ exports.postNewShop = async (req, res, next) => {
   } catch (err) {}
 };
 
+// Edit shop data controller
 exports.editShopData = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -62,38 +62,39 @@ exports.editShopData = async (req, res, next) => {
       });
     }
 
-    Shop.findOne({ _id: mongoose.Types.ObjectId(req.params.shop_id) }).then(
-      (shop) => {
-        console.log(shop);
-      }
-    );
+    const { shopName, shopDescription, startingHour, closingHour } = req.body;
 
-    // res.json({ hello: 'WWW' });
-    const { shopName, shopDescription, shopLogo, startingHour, closingHour } =
-      req.body;
-    Shop.findOneAndUpdate(
-      { _id: mongoose.Types.ObjectId(req.params.shop_id) },
-      {
-        shopName,
-        shopDescription,
-        shopLogo,
-        startingHour,
-        closingHour,
-      },
-      { new: true }
-    )
-      .then((shop) => {
-        if (!shop) {
-          res.status(400).json({ error: "can't find shop" });
-        }
-        res.status(200).json({ shop });
-      })
-      .catch((err) => {
-        res.status(404).json({ error: "can't find shop" });
-      });
+    const checkUserInShop = await Shop.findOne({
+      _id: mongoose.Types.ObjectId(req.params.shop_id),
+    });
+    if (checkUserInShop.shopOwner.includes(req.user_id)) {
+      Shop.findOneAndUpdate(
+        { _id: mongoose.Types.ObjectId(req.params.shop_id) },
+        {
+          shopName,
+          shopDescription,
+          shopLogo: req.file.path,
+          startingHour,
+          closingHour,
+        },
+        { new: true }
+      )
+        .then((shop) => {
+          if (!shop) {
+            res.status(400).json({ error: "can't find shop" });
+          }
+          res.status(200).json({ shop });
+        })
+        .catch((err) => {
+          res.status(404).json({ error: "can't find shop" });
+        });
+    } else {
+      res.status(400).json({ error: "you aren't authorized to edit" });
+    }
   } catch (err) {}
 };
 
+// Get all shops
 exports.getAllShops = async (req, res, next) => {
   Shop.find()
     .then((shops) => {

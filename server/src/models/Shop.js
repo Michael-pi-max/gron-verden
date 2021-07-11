@@ -13,10 +13,10 @@ const ShopSchema = new schema(
       type: String,
     },
     startingHour: {
-      type: Date,
+      type: String,
     },
     closingHour: {
-      type: Date,
+      type: String,
     },
     shopOwner: [
       {
