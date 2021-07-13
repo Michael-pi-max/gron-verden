@@ -23,7 +23,7 @@ exports.postNewPlant = async (req, res, next) => {
     const user = await User.findOne({
       _id: mongoose.Types.ObjectId(req.user_id),
     });
-    if (user.userRole == 'provider') {
+    if (user.userRole == 'provider' || user.userRole == 'user') {
       const {
         plantName,
         plantType,

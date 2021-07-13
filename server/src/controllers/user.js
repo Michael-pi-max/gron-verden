@@ -169,14 +169,18 @@ exports.editUserData = async (req, res, next) => {
 };
 
 // Delete user data controller
-exports.deleteUserData = (req, res, next) => {
+exports.deleteUserData = async (req, res, next) => {
+  console.log(req.user_id);
   User.findByIdAndDelete({ _id: mongoose.Types.ObjectId(req.user_id) })
-    .then((user) => {
+    .then(async (user) => {
       res.status(200).json({ user });
     })
     .catch((err) => {
       res.status(404).json({ error: "can't find user" });
     });
+  Shop.findOneAndDelete({
+    shopOwner: mongoose.Types.ObjectId(req.user_id),
+  });
 };
 
 // Post plants to cart

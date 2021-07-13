@@ -31,7 +31,6 @@ const upload = multer({
   },
 });
 
-
 // Create an event - POST
 router.post(
   '/new',
@@ -40,5 +39,22 @@ router.post(
   eventValidation.validate('CREATE'),
   eventController.createEvent
 );
+
+// Edit an event - PUT
+router.put(
+  '/:event_id',
+  verifyUser,
+  upload.single('eventLogo'),
+  eventValidation.validate('EDIT'),
+  eventController.editEvent
+);
+
+// Get single event - GET
+router.get('/:event_id', verifyUser, eventController.getEvent);
+
+// Get all event - GET
+router.get('/all', verifyUser, eventController.getAllEvents);
+
+router.post('/apply/:event_id', verifyUser, eventController.applyEvent);
 
 module.exports = router;
