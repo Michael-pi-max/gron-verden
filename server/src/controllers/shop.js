@@ -5,6 +5,8 @@ const { validationResult } = require('express-validator');
 
 // Post new shop controller
 exports.postNewShop = async (req, res, next) => {
+  console.log(req.user_id);
+  // console.log(req.file.path);
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

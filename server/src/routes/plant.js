@@ -56,5 +56,16 @@ router.put(
 );
 
 // Delete single plant - DELETE
+// router.delete('/:plant_id', verifyUser, plantController.deleteSinglePlant);
+
+// Post exchange plant - POST
+// router.post(
+//   '/exchange/:plant_id',
+//   verifyUser,
+//   plantController.postExchangePlant
+// );
+
+
+
 
 module.exports = router;

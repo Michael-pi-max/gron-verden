@@ -108,3 +108,20 @@ exports.editSinglePlant = async (req, res, next) => {
     });
   } catch (err) {}
 };
+
+// Delete a single plant
+// exports.deleteSinglePlant = (req, res, next) => {
+//   Plant.findByIdAndDelete({ _id: mongoose.Types.ObjectId(req.plant_id) })
+//     .then((plant) => {
+//       if (plant) {
+//         res.status(200).json({ plant });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(404).json({ error: "can't find plant" });
+//     });
+// };
+
+// -------------------------------------------------------------------------------------
+// exports.postExchangePlant = async (req, res, next) => {
+// };

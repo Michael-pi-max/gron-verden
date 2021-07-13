@@ -27,13 +27,14 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5,
+    fileSize: 1024 * 1024,
   },
 });
 
 /**
  * - User login
  * - User register
+ * - User logout
  */
 
 // Login a user - POST
@@ -61,5 +62,12 @@ router.put(
 
 // Delete user data - DELETE
 router.delete('/user', verifyUser, userController.deleteUserData);
+
+// Posting plants to cart - POST
+router.post(
+  '/user/cart/:shop_id/:plant_id',
+  verifyUser,
+  userController.postToCart
+);
 
 module.exports = router;

@@ -38,6 +38,24 @@ const UserSchema = new schema(
     city: {
       type: String,
     },
+    cart: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'plant',
+      },
+    ],
+    events: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'event',
+      },
+    ],
+    // exchangePlant: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'plant',
+    //   },
+    // ],
   },
   {
     timestamps: true,

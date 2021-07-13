@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const Shop = require('../models/Shop');
+const Plant = require('../models/Plant');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
@@ -72,13 +74,16 @@ exports.register = async (req, res, next) => {
       city,
     } = req.body;
     // check if email already exists
+
+    // console.log(req.file.filename);
+
     User.findOne({ email: email })
       .then((user) => {
         if (user) {
           res.status(400).json({ error: 'Email already exists' });
         } else {
           // Creates a user from the req.body
-          console.log(req.file);
+          // console.log(req.file);
           User.create({
             firstName,
             lastName,
@@ -172,4 +177,20 @@ exports.deleteUserData = (req, res, next) => {
     .catch((err) => {
       res.status(404).json({ error: "can't find user" });
     });
+};
+
+// Post plants to cart
+exports.postToCart = async (req, res, next) => {
+  // Check if shop_id is valid
+  // Check if plant is under shopProduct
+  // If there, add it to cart in the user
+  const user = await User.findOne({ _id: req.user_id });
+  const shop = await Shop.findOne({ _id: req.params.shop_id });
+  if (shop.shopProducts.plants.includes(req.params.plant_id)) {
+    user.cart.unshift(req.params.plant_id);
+    res.status(200).json({ success: 'true', user });
+    user.save();
+  } else {
+    res.status(404).json({ error: 'There is no plant' });
+  }
 };

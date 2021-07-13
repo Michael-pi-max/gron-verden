@@ -14,7 +14,7 @@ const app = express();
 const userRouter = require('./routes/user');
 const plantRouter = require('./routes/plant');
 const shopRouter = require('./routes/shop');
-
+const eventRouter = require('./routes/event');
 // Connecting to database
 mongoose
   .connect(`${process.env.MONGO_URI}/${process.env.MONGO_DB_NAME}`, {
@@ -40,6 +40,7 @@ app.use('/uploads/', express.static('uploads'));
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/plants', plantRouter);
 app.use('/api/v1/shops', shopRouter);
+app.use('/api/v1/events', eventRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`listening to port ${process.env.PORT}`.yellow.bold);

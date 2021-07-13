@@ -4,7 +4,6 @@ const shopController = require('../controllers/shop');
 const { verifyUser } = require('../middlewares/auth/auth');
 const multer = require('multer');
 
-
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -28,7 +27,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024,
+    fileSize: 1024 * 1024 * 5,
   },
 });
 
