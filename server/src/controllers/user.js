@@ -93,13 +93,13 @@ exports.register = async (req, res, next) => {
             profilePicture: req.file.path,
             email,
             password,
-            userRole,
+            userRole: 'user',
             phoneNumber,
             city,
           }).then((user) => {
             res.status(201).json({
               status: 'success',
-              token: getToken(User._id),
+              token: 'gotu',
               user,
             });
           });
