@@ -40,20 +40,8 @@ router.post(
   eventController.createEvent
 );
 
-// Edit an event - PUT
-router.put(
-  '/:event_id',
-  verifyUser,
-  upload.single('eventLogo'),
-  eventValidation.validate('EDIT'),
-  eventController.editEvent
-);
-
-// Get single event - GET
-router.get('/:event_id', verifyUser, eventController.getEvent);
-
-// Get all event - GET
-router.get('/all', verifyUser, eventController.getAllEvents);
+// Get all plants - GET
+router.get('/all', eventController.getAllEvent);
 
 router.post('/apply/:event_id', verifyUser, eventController.applyEvent);
 

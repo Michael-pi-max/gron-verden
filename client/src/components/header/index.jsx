@@ -96,6 +96,11 @@ const Header = (props) => {
                       Gron
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link className="d-block" to="/event">
+                      Event
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </nav>

@@ -70,7 +70,9 @@ function PlantList({ plantsId }) {
   return (
     <div>
       {plantsId.length === 0 ? (
-        <DrawerForm />
+        <div className="container">
+          <DrawerForm />
+        </div>
       ) : (
         <ShopPlantCategory plants={plantData} />
       )}

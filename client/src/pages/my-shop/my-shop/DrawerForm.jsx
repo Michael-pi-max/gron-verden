@@ -8,6 +8,7 @@ import {
   Input,
   Select,
   DatePicker,
+  InputNumber,
 } from 'antd';
 import { Upload, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
@@ -142,20 +143,6 @@ const DrawerForm = ({ createPlant }) => {
         onClose={onClose}
         visible={visible}
         bodyStyle={{ paddingBottom: 80 }}
-        // footer={
-        //     <div
-        //     style={{
-        //         textAlign: 'right',
-        //     }}
-        //     >
-        //     <Button onClick={onClose} style={{ marginRight: 8 }}>
-        //         Cancel
-        //     </Button>
-        //     <Button onClick={onClose} type="primary">
-        //         Submit
-        //     </Button>
-        //     </div>
-        // }
       >
         <Form
           {...layout}
@@ -179,7 +166,7 @@ const DrawerForm = ({ createPlant }) => {
             label="Plant Name"
             rules={[{ required: true }]}
           >
-            <Input />
+            <Input placeholder="Plant name" />
           </Form.Item>
           <Form.Item name="plantType" label="Type" rules={[{ required: true }]}>
             <Select placeholder="Plant Type" allowClear>
@@ -191,44 +178,34 @@ const DrawerForm = ({ createPlant }) => {
             </Select>
           </Form.Item>
           <Form.Item name="plantDescription" label="Description">
-            <Input.TextArea />
+            <Input.TextArea placeholder="Plant Description..." />
           </Form.Item>
           <Form.Item
             name="plantLength"
             label="Plant Length"
             rules={[{ required: true }]}
           >
-            <Input />
+            <InputNumber
+              min={1}
+              max={300}
+              defaultValue={25}
+              className="w-100"
+              placeholder="Plant length in cm"
+            />
           </Form.Item>
           <Form.Item
             name="plantPrice"
             label="Plant Price"
             rules={[{ required: true }]}
           >
-            <Input />
+            <InputNumber
+              min={20}
+              max={50000}
+              defaultValue={200}
+              placeholder="Plant price"
+              className="w-100"
+            />
           </Form.Item>
-
-          {/* <Form.Item
-                    noStyle
-                    shouldUpdate={(prevValues, currentValues) => prevValues.gender !== currentValues.gender}
-                    >
-                    {({ getFieldValue }) =>
-                        getFieldValue('gender') === 'other' ? (
-                        <Form.Item name="customizeGender" label="Customize Gender" rules={[{ required: true }]}>
-                            <Input />
-                        </Form.Item>
-                        ) : null
-                    }
-                    </Form.Item> */}
-          {/* <Form.Item name="email" label="Email" rules={[{ required: true }]}>
-                    <Input />
-                    </Form.Item>
-                    <Form.Item name="phoneNumber" label="Phone Number" rules={[{ required: true }]}>
-                    <Input />
-                    </Form.Item>
-                    <Form.Item name="city" label="City" rules={[{ required: true }]}>
-                    <Input />
-                    </Form.Item> */}
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
               Submit

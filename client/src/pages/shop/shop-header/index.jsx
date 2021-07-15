@@ -66,6 +66,11 @@ function ShopHeader(props) {
                         Gron
                       </Link>
                     </li>
+                    <li class="nav-item">
+                      <Link class="d-block" to="/event">
+                        Event
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </nav>

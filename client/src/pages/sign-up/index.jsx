@@ -8,6 +8,7 @@ import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { signUpAsync } from '../../store/user/action';
+import './style.css';
 
 const { Option } = Select;
 
@@ -82,10 +83,9 @@ const SignUp = () => {
   console.log(signUpLoading);
 
   useEffect(() => {
-    if(token==="gotu"){
-      history.push("/login")
-    }
-    else if (token) {
+    if (token === 'gotu') {
+      history.push('/login');
+    } else if (token) {
       history.push('/');
     }
   }, [token]);
@@ -137,15 +137,19 @@ const SignUp = () => {
       style={{
         backgroundImage: "url('/login-background.jpg')",
         backgroundSize: '100% 100%',
+        height: '100vh',
+        overflowY: 'hidden',
         display: 'flex',
         justifyContent: 'flex-end',
         paddingRight: '300px',
         alignItems: 'center',
-        height: '100vh',
       }}
     >
-      <Card style={{ width: '500px' }}>
-        <h1 style={{ textAlign: 'center' }}>Sign Up</h1>
+      <Card
+        style={{ width: '500px', height: '100vh', position: 'relative' }}
+        className="box-shadow"
+      >
+        <h4 style={{ textAlign: 'center' }}>Sign Up</h4>
         {signUpError && signUpError.response ? (
           <Alert
             message={signUpError.response.data.message}
@@ -163,6 +167,11 @@ const SignUp = () => {
           name="control-hooks"
           onFinish={handleSubmit}
         >
+          <img
+            src="images/logo.png"
+            alt="Grøn Verden"
+            className="img-fluid float-right"
+          />
           <Form.Item name="profile" label="Profile Picture">
             <Upload
               listType="picture-card"
@@ -174,19 +183,20 @@ const SignUp = () => {
               {form.fileList.length === 1 ? null : uploadButton}
             </Upload>
           </Form.Item>
+
           <Form.Item
             name="firstName"
             label="First Name"
             rules={[{ required: true }]}
           >
-            <Input />
+            <Input placeholder="First name" />
           </Form.Item>
           <Form.Item
             name="lastName"
             label="Last Name"
             rules={[{ required: true }]}
           >
-            <Input />
+            <Input placeholder="Last name" />
           </Form.Item>
           <Form.Item
             name="userName"
@@ -201,8 +211,8 @@ const SignUp = () => {
 
           <Form.Item name="gender" label="Gender">
             <Select placeholder="Gender" allowClear>
-              <Option value="Male">male</Option>
-              <Option value="Female">female</Option>
+              <Option value="Male">Male</Option>
+              <Option value="Female">Female</Option>
             </Select>
           </Form.Item>
           <Form.Item
@@ -210,39 +220,27 @@ const SignUp = () => {
             label="Date Of Birth"
             rules={[{ required: true }]}
           >
-            <Input />
+            <DatePicker placeholder="Select birth date" className="w-100" />
           </Form.Item>
-          {/* <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) => prevValues.gender !== currentValues.gender}
-      >
-        {({ getFieldValue }) =>
-          getFieldValue('gender') === 'other' ? (
-            <Form.Item name="customizeGender" label="Customize Gender" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          ) : null
-        }
-      </Form.Item> */}
           <Form.Item name="email" label="Email" rules={[{ required: true }]}>
-            <Input />
+            <Input placeholder="Email" />
           </Form.Item>
           <Form.Item
             name="password"
             label="Password"
             rules={[{ required: true }]}
           >
-            <Input />
+            <Input placeholder="Password" />
           </Form.Item>
           <Form.Item
             name="phoneNumber"
             label="Phone Number"
             rules={[{ required: true }]}
           >
-            <Input />
+            <Input placeholder="Phone number" />
           </Form.Item>
           <Form.Item name="city" label="City" rules={[{ required: true }]}>
-            <Input />
+            <Input placeholder="City" />
           </Form.Item>
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
@@ -252,7 +250,6 @@ const SignUp = () => {
               Reset
             </Button>
           </Form.Item>
-
           <Form.Item>
             <Typography.Text>
               Already have account? <Link to="/login">Log in</Link>

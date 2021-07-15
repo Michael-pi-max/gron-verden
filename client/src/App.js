@@ -23,6 +23,7 @@ import './public/css/responsive.css';
 import LearnSection from './pages/learn';
 import CartSection from './pages/cart/CartSection';
 import IdentifyPlant from './pages/identifyPlant';
+import EventSection from './pages/event';
 
 const App = () => {
   useScript('/js/jquery-3.4.1.min.js');
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/learn" component={LearnSection}></Route>
         <Route path="/cart" component={CartSection}></Route>
         <Route path="/gron" component={IdentifyPlant}></Route>
+        <Route path="/event" component={EventSection}></Route>
         <Route path="*">
           <NotFound />
         </Route>

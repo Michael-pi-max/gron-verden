@@ -65,7 +65,4 @@ router.put(
 //   plantController.postExchangePlant
 // );
 
-
-
-
 module.exports = router;

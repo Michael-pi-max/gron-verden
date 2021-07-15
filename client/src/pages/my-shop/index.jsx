@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Spin } from 'antd';
 
+import { fetchUserAsync } from '../../store/user/action';
+
 const ShopAdmin = (props) => {
   const dispatch = useDispatch();
 
@@ -21,6 +23,11 @@ const ShopAdmin = (props) => {
   const { user: userObject, fetchUserLoading } = useSelector(
     (state) => state.user
   );
+
+  useEffect(() => {
+    console.log('At App level');
+    dispatch(fetchUserAsync());
+  }, []);
 
   //   console.log(shops);
   console.log(userObject.userRole);

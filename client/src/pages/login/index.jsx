@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginAsync } from '../../store/user/action';
 import { fetchUserAsync } from '../../store/user/action';
 
+import './style.css';
+
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -40,8 +42,9 @@ const Login = () => {
         height: '100vh',
       }}
     >
-      <Card style={{ width: '500px' }}>
-        <h1 style={{ textAlign: 'center' }}>Login</h1>
+      <Card style={{ width: '500px' }} className="box-shadow">
+        <img src="images/logo.png" alt="Grøn Verden" className="img-fluid mx-auto" />
+        <h4 style={{ textAlign: 'center' }}>Login</h4>
         {loginError && loginError.response ? (
           <Alert
             message={loginError.response.data.message}

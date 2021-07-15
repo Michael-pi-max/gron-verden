@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Form,
@@ -9,7 +10,6 @@ import {
   Modal,
   message,
   DatePicker,
-  TimePicker,
 } from 'antd';
 import {
   UploadOutlined,
@@ -18,47 +18,41 @@ import {
   PlusOutlined,
 } from '@ant-design/icons';
 
+// import { createEventAsync, clearCreateEventSuccess } from "../../../store/event/action";
 import {
-  createShopAsync,
-  clearCreateShopSuccess,
-} from '../../../store/shop/action';
-import { fetchUserAsync } from '../../../store/user/action';
+  createEventAsync,
+  clearCreateEventSuccess,
+} from '../../store/event/action';
 const layout = {
   labelCol: { span: 8 },
-  wrapperCol: { span: 10 },
+  wrapperCol: { span: 16 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 12 },
+  wrapperCol: { offset: 8, span: 16 },
 };
 
-const CreateShop = ({ createShop }) => {
+const EventCreate = ({ createEvent }) => {
   const dispatch = useDispatch();
-  const { createShopLoading, createShopError, createShopSuccess } = useSelector(
-    (state) => state.shop
-  );
+  const { createEventLoading, createEventError, createEventSuccess } =
+    useSelector((state) => state.event);
 
   const [form, setForm] = useState({
     file: null,
     fileList: [],
   });
 
-  const { user: userObject, fetchUserLoading } = useSelector(
-    (state) => state.user
-  );
+  // const { user: userObject, fetchUserLoading } = useSelector(
+  //   (state) => state.user
+  // );
 
   useEffect(() => {
-    if (createShopSuccess) {
-      message.success('Shop Created Succesfully');
-      userObject.userRole = 'provider';
-      dispatch(clearCreateShopSuccess());
-      dispatch(fetchUserAsync());
+    if (createEventSuccess) {
+      message.success('Event Created Succesfully');
+      dispatch(clearCreateEventSuccess());
+      // dispatch(fetchUserAsync());
     }
-  }, [createShopSuccess]);
-  if (!fetchUserLoading) {
-    console.log(userObject);
-  } else {
-    console.log('still');
-  }
+  }, [createEventSuccess]);
+
   const [preview, setPreview] = useState({
     previewVisible: false,
     previewImage: '',
@@ -110,39 +104,47 @@ const CreateShop = ({ createShop }) => {
   const handleChange = ({ fileList, file }) =>
     setForm({ ...form, file, fileList });
 
-  const [createShopForm] = Form.useForm();
+  const [createEventForm] = Form.useForm();
   const onFinish = (values) => {
-    const { shopName, startingHour, closingHour, shopDescription } = values;
+    console.log(values);
+    const {
+      eventName,
+      eventDescription,
+      eventGoal,
+      eventStartDate,
+      eventEndDate,
+      eventTotalParticipants,
+    } = values;
     if (!form.file) {
-      message.error('Shop logo is required');
+      message.error('Event logo is required');
     } else if (!isJpgOrPng(form.file)) {
-      message.error('Shop logo can only be JPG or PNG file');
+      message.error('Event logo can only be JPG or PNG file');
     } else {
       const formData = new FormData();
-      formData.append('shopName', shopName);
-      formData.append('shopDescription', shopDescription);
-      formData.append('startingHour', startingHour);
-      formData.append('closingHour', closingHour);
-      formData.append('shopLogo', form.file);
+      formData.append('eventName', eventName);
+      formData.append('eventDescription', eventDescription);
+      formData.append('eventGoal', eventGoal);
+      formData.append('eventStartDate', eventStartDate);
+      formData.append('eventEndDate', eventEndDate);
+      formData.append('eventTotalParticipants', eventTotalParticipants);
+      formData.append('eventLogo', form.file);
 
-      dispatch(createShopAsync(formData));
+      dispatch(createEventAsync(formData));
     }
   };
   const onReset = () => {
-    createShopForm.resetFields();
+    createEventForm.resetFields();
   };
 
   return (
     <>
       <Form
         {...layout}
-        form={createShopForm}
+        form={createEventForm}
         name="control-hooks"
         onFinish={onFinish}
-        className="pt-4"
       >
-        <h1 className="text-center">Create Shop</h1>
-        <Form.Item name="shopLogo" label="Profile Picture">
+        <Form.Item name="eventLogo" label="Profile Picture">
           <Upload
             listType="picture-card"
             fileList={form.fileList}
@@ -154,28 +156,39 @@ const CreateShop = ({ createShop }) => {
           </Upload>
         </Form.Item>
         <Form.Item
-          name="shopName"
-          label="Shop Name"
+          name="eventName"
+          label="Event Name"
           rules={[{ required: true }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          name="startingHour"
-          label="Starting Hour"
+          name="eventGoal"
+          label="Event Goal"
           rules={[{ required: true }]}
         >
-          <TimePicker use12Hours />
+          <Input />
         </Form.Item>
         <Form.Item
-          name="closingHour"
-          label="Closing Hour"
+          name="eventStartDate"
+          label="StartDate"
           rules={[{ required: true }]}
         >
-          <TimePicker use12Hours />
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="eventEndDate"
+          label="EndDate"
+          rules={[{ required: true }]}
+        >
+          <Input />
         </Form.Item>
 
-        <Form.Item name="shopDescription" label="Description">
+        <Form.Item name="eventDescription" label="Description">
+          <Input.TextArea />
+        </Form.Item>
+
+        <Form.Item name="eventTotalParticipants" label="Total Participants">
           <Input.TextArea />
         </Form.Item>
 
@@ -183,7 +196,6 @@ const CreateShop = ({ createShop }) => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-          <span className="pr-4"></span>
           <Button htmlType="button" onClick={onReset}>
             Reset
           </Button>
@@ -205,4 +217,4 @@ const CreateShop = ({ createShop }) => {
   );
 };
 
-export default CreateShop;
+export default EventCreate;
