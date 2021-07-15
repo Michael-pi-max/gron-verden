@@ -22,20 +22,21 @@ const ShopAdmin = (props) => {
     (state) => state.user
   );
 
-//   console.log(shops);
+  //   console.log(shops);
   console.log(userObject.userRole);
 
   return (
     <div>
       <ShopHeader />
-      <ShopBanner />
+      <ShopBanner bannerTitle="Shop" />
       {
         userObject.userRole === 'user' ? (
-          <CreateShop />
+          <div className="container">
+            <CreateShop />
+          </div>
         ) : (
           <MyShop shops={shops} />
         )
-        // (userObject.userRole !== "user") ? <CreateShop/> : <MyShop />
       }
 
       <Footer />

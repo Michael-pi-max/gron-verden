@@ -69,6 +69,24 @@ export const createShopError = (error) => ({
   },
 });
 
+export const createCartStart = () => ({
+  type: ShopActionTypes.CART_POST_START,
+});
+
+export const createCartSuccess = (cart) => ({
+  type: ShopActionTypes.CART_POST_SUCCESS,
+  payload: {
+    cart,
+  },
+});
+
+export const createCartError = (error) => ({
+  type: ShopActionTypes.CART_POST_ERROR,
+  payload: {
+    error,
+  },
+});
+
 export const clearCreateShopSuccess = () => ({
   type: ShopActionTypes.CLEAR_SHOP_CREATE_SUCCESS,
 });
@@ -183,6 +201,36 @@ export const createShopAsync = (formData) => {
       dispatch(createShopSuccess(response.data.shop));
     } catch (err) {
       dispatch(createShopError(err));
+    }
+  };
+};
+
+// USER AND TOKEN COULD BE FIND SIMPLY
+export const createCartAsync = (formData) => {
+  return async (dispatch, getState) => {
+    const {
+      user: { user, token },
+    } = getState();
+
+    try {
+      dispatch(createCartStart());
+      console.log(token);
+      const response = await axios.post(
+        `http://localhost:8000/api/v1/shops/new`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      console.log(
+        `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${response.data.shop}`
+      );
+      dispatch(createCartSuccess(response.data.shop));
+    } catch (err) {
+      dispatch(createCartError(err));
     }
   };
 };

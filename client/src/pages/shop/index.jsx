@@ -16,7 +16,7 @@ const Shop = (props) => {
   const dispatch = useDispatch();
   const params = useParams();
   const { user } = useSelector((state) => state.user);
-  console.log(user);
+
   const { shop: shopObject, fetchShopLoading } = useSelector(
     (state) => state.shop
   );
@@ -38,7 +38,7 @@ const Shop = (props) => {
             alignItems: 'center',
           }}
         >
-          <Spin tip="Loadin book..." />
+          <Spin tip="Loading data..." />
         </div>
       </>
     );
@@ -48,7 +48,7 @@ const Shop = (props) => {
     <div id="pageWrapper">
       <ShopHeader />
       <ShopBanner bannerTitle="Shop" />
-      <ShopStat />
+      <ShopStat totalPlants={shop.shopProducts.plants.length} />
       <ShopMain />
       <Footer />
     </div>

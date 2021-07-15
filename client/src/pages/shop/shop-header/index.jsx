@@ -9,7 +9,11 @@ function ShopHeader(props) {
           <div class="col-6 col-sm-2">
             <div class="logo">
               <Link to="/">
-                <img src="images/logo.png" alt="Botanical" class="img-fluid" />
+                <img
+                  src="/images/logo.png"
+                  alt="Grøn Verden"
+                  class="img-fluid"
+                />
               </Link>
             </div>
           </div>
@@ -35,13 +39,6 @@ function ShopHeader(props) {
                         Home
                       </Link>
                     </li>
-                    {/* <li class="nav-item dropdown">
-											<a class="dropdown-toggle d-block" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Store</a>
-											<ul class="list-unstyled text-capitalize dropdown-menu mt-0 py-0">
-												<li class="d-block mx-0"><a href="shop.html">Shop Left Sidebar</a></li>
-												<li class="d-block mx-0"><a href="shop-detail.html">Single Product</a></li>
-											</ul>
-										</li> */}
                     <li class="nav-item">
                       <Link class="d-block" to="/shop-admin">
                         My Shop
@@ -76,7 +73,6 @@ function ShopHeader(props) {
           </div>
           <div class="col-sm-3 col-lg-2">
             <ul class="nav nav-tabs wishListII pt-5 justify-content-end border-bottom-0">
-              {/* <li class="nav-item ml-0"><a class="nav-link icon-search" href="javascript:void(0);"></a></li> */}
               <li class="nav-item">
                 <a
                   class="nav-link position-relative icon-cart"

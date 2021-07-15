@@ -22,63 +22,16 @@ const ProductContent = ({ plants }) => {
     });
   });
 
-  console.log(shopPlants);
-
-  console.log(shopPlants);
-
   return (
     <div class="col-12 col-lg-9 order-lg-3">
       <article id="content">
         <header class="show-head d-flex flex-wrap justify-content-between mb-7">
-          <ul class="list-unstyled viewFilterLinks d-flex flex-nowrap align-items-center">
-            <li class="mr-2">
-              <a href="javascript:void(0);" class="active">
-                <i class="fas fa-th-large"></i>
-              </a>
-            </li>
-            <li class="mr-2">
-              <a href="javascript:void(0);">
-                <i class="fas fa-list"></i>
-              </a>
-            </li>
-            <li class="mr-2">Showing 1–9 of 24 results</li>
-          </ul>
           <div class="sortGroup">
             <div class="d-flex flex-nowrap align-items-center">
-              <strong class="groupTitle mr-2">Sort by:</strong>
-              <div class="dropdown">
-                <button
-                  class="dropdown-toggle buttonReset"
-                  type="button"
-                  id="sortGroup"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Default sorting
-                </button>
-                <ul
-                  class="dropdown-menu dropdown-menu-right"
-                  aria-labelledby="sortGroup"
-                >
-                  <li>
-                    <a href="javascript:void(0);">Default Order</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">Default Order</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">Default Order</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">Default Order</a>
-                  </li>
-                </ul>
-              </div>
+              <h1 class="mr-2">List of Plants</h1>
             </div>
           </div>
         </header>
-        {/* TODO : What if no shop is yet available ena the other data's */}
         <div class="row">
           {shopPlants &&
             shopPlants.map((plant) => {
@@ -119,18 +72,16 @@ const ProductContent = ({ plants }) => {
                       </ul>
                     </div>
                     <div class="text-center py-5 px-4">
-                      <span class="title d-block mb-2">
+                      <span class="title fwEbold d-block mb-1">
                         <Link to={`/product/${plant._id}`}>
                           {plant.plantName}
                         </Link>
                       </span>
                       <span class="price d-block fwEbold">
-                        <del>80.50 $</del>
-                        {plant.plantPrice}
-                        {plant.price}
+                        Plant price: {plant.plantPrice}br
                       </span>
                       <span class="hotOffer fwEbold text-white position-absolute d-block">
-                        {plant.plantLength}
+                        {plant.plantLength}cm
                       </span>
                       <span class="hotOffer green fwEbold text-uppercase text-white position-absolute d-block ml-8">
                         Size

@@ -75,7 +75,7 @@ const INITIAL_STATE = {
           ...state,
           createPlantLoading: false,
           createPlantSuccess: true,
-          plants: [action.payload.plant, ...state.plants],
+          plants: [action.payload.plant, ...state.plant],
         };
       case PlantActionTypes.PLANT_CREATE_ERROR:
         return {

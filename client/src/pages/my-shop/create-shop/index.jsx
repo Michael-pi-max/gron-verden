@@ -24,25 +24,11 @@ import {
 import { fetchUserAsync } from '../../../store/user/action';
 const layout = {
   labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  wrapperCol: { span: 10 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 8, span: 12 },
 };
-
-// // DUMMY DATA
-// const shops = [
-//   {
-//       "id": 1,
-//       "shopName":"EshiGreen",
-//       "shopDescription":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//   },
-//   {
-//       "id": 2,
-//       "shopName":"Gron Verden",
-//       "shopDescription":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//   },
-// ]
 
 const CreateShop = ({ createShop }) => {
   const dispatch = useDispatch();
@@ -152,7 +138,9 @@ const CreateShop = ({ createShop }) => {
         form={createShopForm}
         name="control-hooks"
         onFinish={onFinish}
+        className="pt-4"
       >
+        <h1 className="text-center">Create Shop</h1>
         <Form.Item name="shopLogo" label="Profile Picture">
           <Upload
             listType="picture-card"
@@ -194,6 +182,7 @@ const CreateShop = ({ createShop }) => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+          <span className="pr-4"></span>
           <Button htmlType="button" onClick={onReset}>
             Reset
           </Button>

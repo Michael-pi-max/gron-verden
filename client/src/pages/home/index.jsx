@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchShopsAsync } from '../../store/shop/action';
 import { fetchUserAsync } from '../../store/user/action';
+import { fetchPlantsAsync } from '../../store/plant/action';
 
 const Home = (props) => {
   const dispatch = useDispatch();
@@ -28,15 +29,12 @@ const Home = (props) => {
     (state) => state.user
   );
 
-  //   const { plants, page, limit, total, fetchShopsLoading } = useSelector(
-  //     (state) => state.shop
-  //   );
-
   console.log(userObject);
 
   useEffect(() => {
     console.log('At App level');
     dispatch(fetchShopsAsync(page, limit));
+    dispatch(fetchPlantsAsync(page, limit));
     dispatch(fetchUserAsync());
   }, []);
 
@@ -65,7 +63,7 @@ const Home = (props) => {
       <ChooseUs />
       <PlantCategories />
       <Banner />
-      <ShopCategory shops={shops} user={userObject} />
+      <ShopCategory shopsProp={shops} user={userObject} />
       <Footer />
     </div>
   );

@@ -9,9 +9,12 @@ const ShopPlantCategory = ({ plants }) => {
         <div className="row">
           <div className="box-title">
             <h5 className="mx-auto box-des des-popular-product">
-              <span className="des-line">Plant list ({plants.length})</span>
+              <span className="des-line pb-4">
+                Plant list ({plants.length})
+              </span>
             </h5>
-            <h2 className="des-title"></h2>
+            {/* <h2 className="des-title"></h2> */}
+            <DrawerForm />
           </div>
         </div>
         <div className="row">
@@ -27,14 +30,14 @@ const ShopPlantCategory = ({ plants }) => {
                     <div className="box-item-image">
                       <Link to={`/plants/${plant._id}`}>
                         <img
-                          src="http://landing.engotheme.com/html/hamadryad/demo/images/products/product-1.jpg"
+                          src={`http://localhost:8000/${plant.plantImage}`}
                           alt="Deal of the week"
                         />
                       </Link>
                     </div>
                     <div className="box-item-info">
                       <h3 className="">
-                        <a href="" className="item-name">
+                        <a href="" className="item-name" style={{color:'#F57C00'}}>
                           {plant.plantName}
                         </a>
                       </h3>
@@ -65,7 +68,6 @@ const ShopPlantCategory = ({ plants }) => {
             })}
         </div>
       </div>
-      <DrawerForm />
     </section>
   );
 };

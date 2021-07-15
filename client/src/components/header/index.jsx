@@ -18,7 +18,6 @@ const Header = (props) => {
       <div className="container-fluid px-xl-17 px-lg-5 px-md-3 px-0 d-flex flex-wrap">
         <div className="col-6 col-sm-3 col-lg-2 order-sm-2 order-md-0 dis-none">
           <ul className="nav nav-tabs langList pt-xl-6 pt-lg-4 pt-3 border-bottom-0">
-            <li></li>
             <li className="dropdown">
               <a
                 className="dropdown-toggle text-uppercase"
@@ -74,15 +73,13 @@ const Header = (props) => {
                     </Link>
                   </li>{' '}
                   <li className="nav-item">
-                    {/* TODO LOGO */}
-                    {/* <h4>GRON VERDEN</h4> */}
-                    <a className="nLogo" href="home.html">
+                    <Link className="nLogo" to="/">
                       <img
                         src="images/logo.png"
-                        alt="Botanical"
+                        alt="Grøn Verden"
                         className="img-fluid"
                       />
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <Link className="d-block" to="/learn">
@@ -90,25 +87,14 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="d-block" to="about-us.html">
+                    <Link className="d-block" to="/cart">
                       Cart
                     </Link>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a
-                      className="dropdown-toggle d-block"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                  <li className="nav-item">
+                    <Link className="d-block" to="about-us.html">
                       Gron
-                    </a>
-                    <ul className="list-unstyled text-capitalize border-right border-bottom border-left dropdown-menu mt-0 py-0">
-                      <li className="d-block mx-0">
-                        <a href="cart-page.html">Cart Page</a>
-                      </li>
-                    </ul>
+                    </Link>
                   </li>
                 </ul>
               </div>
