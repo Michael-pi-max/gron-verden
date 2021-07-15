@@ -29,22 +29,30 @@ const Home = (props) => {
     (state) => state.user
   );
 
+  const {
+    plants,
+    page: pagePlant,
+    limit: limitPlant,
+    total: totalPlant,
+    fetchPlantsLoading,
+  } = useSelector((state) => state.plant);
+
   console.log(userObject);
 
   useEffect(() => {
     console.log('At App level');
     dispatch(fetchShopsAsync(page, limit));
-    dispatch(fetchPlantsAsync(page, limit));
+    dispatch(fetchPlantsAsync(pagePlant, limitPlant));
     dispatch(fetchUserAsync());
   }, []);
 
-  if (fetchShopsLoading || !shops) {
+  if (fetchShopsLoading || !shops || fetchPlantsLoading || !plants) {
     return (
       <>
         <div
           style={{
             width: '100%',
-            height: '200px',
+            height: '100vh',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -56,12 +64,45 @@ const Home = (props) => {
     );
   }
 
+  console.log(plants);
+  // object
+  const plantObject = {
+    indoorPlant: 0,
+    housePlant: 0,
+    cactusPlant: 0,
+    tableTreePlant: 0,
+    officePlant: 0,
+  };
+
+  const plantTypeName = [
+    'indoorPlant',
+    'housePlant',
+    'cactusPlant',
+    'tableTreePlant',
+    'officePlant',
+  ];
+  plants.forEach((p) => {
+    plantTypeName.forEach((pName) => {
+      if (p.plantType === pName) {
+        plantObject[pName] += 1;
+      }
+    });
+  });
+
+  // console.log(plantObject);
+  // console.log(shops);
+  // const ratedShops = [];
+  // shops.forEach((s, index) => {
+  //   if(s[index].shopProducts.length < )
+  //   // console.log(index);
+  // });
+
   return (
     <div id="pageWrapper">
       <Header />
       <Intro />
       <ChooseUs />
-      <PlantCategories />
+      <PlantCategories plantTypes={plantObject} />
       <Banner />
       <ShopCategory shopsProp={shops} user={userObject} />
       <Footer />

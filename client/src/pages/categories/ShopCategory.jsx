@@ -1,28 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ShopCategory = ({ shops, user }) => {
-  // let userObject;
-  // shops.forEach((s) => {
-  //   if(s.shopOwner === user._id){
-  //     userObject =
-  //   }
-  // });
+const ShopCategory = ({ shopsProp, user }) => {
   return (
     <section className="popular-product padding-section">
       <div className="container">
         <div className="row">
           <div className="box-title">
             <h5 className="mx-auto box-des des-popular-product">
-              <span className="des-line">The power house shops</span>
+              <span className="des-line">The powerhouses</span>
             </h5>
             <h2 className="des-title">Popular shops</h2>
           </div>
         </div>
         <div className="row">
           {/* TODO : What if no shop is yet available ena the other data's */}
-          {shops &&
-            shops.map((shop) => {
+          {shopsProp &&
+            shopsProp.map((shop) => {
               return (
                 <div
                   key={shop._id}
@@ -41,7 +35,8 @@ const ShopCategory = ({ shops, user }) => {
                       <h3 className="">
                         <Link
                           to={`/shops/${shop._id}`}
-                          className="item-name text-white font-weight-bold"
+                          className="item-name"
+                          style={{ color: '#E0E0E0' }}
                         >
                           {shop.shopName}
                         </Link>
@@ -50,7 +45,9 @@ const ShopCategory = ({ shops, user }) => {
                     </div>
                     <div className="offer">
                       <div className="percent">
-                        {shop.shopProducts.plants.length}
+                        {shop.shopProducts.plants.length > 1
+                          ? `${shop.shopProducts.plants.length} items`
+                          : `${shop.shopProducts.plants.length} item`}
                       </div>
                     </div>
                   </div>

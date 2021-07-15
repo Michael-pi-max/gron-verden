@@ -32,7 +32,7 @@ const Shop = (props) => {
         <div
           style={{
             width: '100%',
-            height: '200px',
+            height: '100vh',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -47,7 +47,7 @@ const Shop = (props) => {
   return (
     <div id="pageWrapper">
       <ShopHeader />
-      <ShopBanner bannerTitle="Shop" />
+      <ShopBanner bannerTitle="Other Shop" userName={shopObject.shopName} />
       <ShopStat totalPlants={shop.shopProducts.plants.length} />
       <ShopMain />
       <Footer />

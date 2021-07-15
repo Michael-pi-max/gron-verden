@@ -24,20 +24,19 @@ const ShopAdmin = (props) => {
 
   //   console.log(shops);
   console.log(userObject.userRole);
+  console.log(userObject);
 
   return (
     <div>
       <ShopHeader />
-      <ShopBanner bannerTitle="Shop" />
-      {
-        userObject.userRole === 'user' ? (
-          <div className="container">
-            <CreateShop />
-          </div>
-        ) : (
-          <MyShop shops={shops} />
-        )
-      }
+      <ShopBanner bannerTitle="My Shop" userName={userObject.firstName} />
+      {userObject.userRole === 'user' ? (
+        <div className="container">
+          <CreateShop />
+        </div>
+      ) : (
+        <MyShop shopsProp={shops} />
+      )}
 
       <Footer />
     </div>

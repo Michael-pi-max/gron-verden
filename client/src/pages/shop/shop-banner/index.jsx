@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function ShopBanner({ bannerTitle }) {
+function ShopBanner({ bannerTitle, userName }) {
   return (
     <section
       class="introBannerHolder d-flex w-100 bgCover"
@@ -23,7 +23,7 @@ function ShopBanner({ bannerTitle }) {
                 <a href="shop.html">Shop</a>
               </li>
               <li class="mr-2">/</li>
-              <li class="active">Pellentesque aliquet</li>
+              <li class="active">{userName ? userName + "'s Shop" : ''}</li>
             </ul>
           </div>
         </div>

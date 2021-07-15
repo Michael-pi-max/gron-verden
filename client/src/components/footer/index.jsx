@@ -94,29 +94,24 @@ function Footer(props) {
             </h3>
             <ul className="list-unstyled footerNavList">
               <li className="mb-1">
-                <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
+                <Link to="/shop-admin" style={{ color: '#aaaaaa' }}>
                   New Plants
-                </a>
+                </Link>
               </li>
-              {/* <li className="mb-2">
-                <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
-                  My shops
-                </a>
-              </li> */}
               <li className="mb-2">
-                <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
+                <Link to="/shops" style={{ color: '#aaaaaa' }}>
                   Shops
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
+                <Link to="/learn" style={{ color: '#aaaaaa' }}>
                   Learn
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
+                <Link to="/cart" style={{ color: '#aaaaaa' }}>
                   Cart
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -129,21 +124,16 @@ function Footer(props) {
             </h3>
             <ul className="list-unstyled footerNavList">
               <li className="mb-1">
-                <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
+                <a href="/profile" style={{ color: '#aaaaaa' }}>
                   Profile
                 </a>
               </li>
 
               <li className="mb-2">
-                <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
+                <Link to="/shop-admin" style={{ color: '#aaaaaa' }}>
                   My shop
-                </a>
+                </Link>
               </li>
-              {/* <li>  */}
-              {/* <a href="javascript:void(0);" style={{ color: '#aaaaaa' }}>
-                  Personal information
-                </a>
-              </li> */}
             </ul>
           </div>
           <div className="coll-4 mb-sm-4 mb-3 mb-lg-0">
@@ -160,7 +150,7 @@ function Footer(props) {
                   className="md-round d-block py-2 px-2"
                   style={{ color: '#aaaaaa' }}
                 >
-                  Trend
+                  Indoor plant
                 </a>
               </li>
               <li className="text-center mb-2">
@@ -169,7 +159,7 @@ function Footer(props) {
                   className="md-round d-block py-2 px-2"
                   style={{ color: '#aaaaaa' }}
                 >
-                  Decor
+                  Office plant
                 </a>
               </li>
               <li className="text-center mb-2 mr-2">
@@ -178,7 +168,7 @@ function Footer(props) {
                   className="md-round d-block py-2 px-2"
                   style={{ color: '#aaaaaa' }}
                 >
-                  Plant
+                  Cactus plant
                 </a>
               </li>
               <li className="text-center mb-2">
@@ -187,16 +177,7 @@ function Footer(props) {
                   className="md-round d-block py-2 px-2"
                   style={{ color: '#aaaaaa' }}
                 >
-                  Table tree
-                </a>
-              </li>
-              <li className="text-center mb-2 mr-2">
-                <a
-                  href="javascript:void(0);"
-                  className="md-round d-block py-2 px-2"
-                  style={{ color: '#aaaaaa' }}
-                >
-                  Bedroom tree
+                  Table tree plant
                 </a>
               </li>
               <li className="text-center mb-2">
@@ -205,7 +186,7 @@ function Footer(props) {
                   className="md-round d-block py-2 px-2"
                   style={{ color: '#aaaaaa' }}
                 >
-                  Living room
+                  House plant
                 </a>
               </li>
             </ul>

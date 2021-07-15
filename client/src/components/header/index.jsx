@@ -92,7 +92,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="d-block" to="about-us.html">
+                    <Link className="d-block" to="/gron">
                       Gron
                     </Link>
                   </li>

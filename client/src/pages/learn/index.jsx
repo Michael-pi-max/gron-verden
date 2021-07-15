@@ -9,7 +9,7 @@ function LearnSection(props) {
   return (
     <div>
       <ShopHeader />
-      <ShopBanner />
+      <ShopBanner bannerTitle="Learn"/>
       <LearnBody />
       <Footer />
     </div>

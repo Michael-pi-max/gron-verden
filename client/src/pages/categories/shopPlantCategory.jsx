@@ -18,7 +18,6 @@ const ShopPlantCategory = ({ plants }) => {
           </div>
         </div>
         <div className="row">
-          {/* TODO : What if no plant is yet available ena the other data's */}
           {plants &&
             plants.map((plant) => {
               return (
@@ -37,14 +36,18 @@ const ShopPlantCategory = ({ plants }) => {
                     </div>
                     <div className="box-item-info">
                       <h3 className="">
-                        <a href="" className="item-name" style={{color:'#F57C00'}}>
+                        <Link
+                          to={`/plants/${plant._id}`}
+                          className="item-name"
+                          style={{ color: '#E0E0E0' }}
+                        >
                           {plant.plantName}
-                        </a>
+                        </Link>
                       </h3>
                       <div className="item-price-rate">
                         <div className="item-price">
-                          <span className="cost">$80.00</span>
-                          <span className="sale">$60.00</span>
+                          <span className="sale text-secondary">Price </span>
+                          <span className="sale text-primary">{plant.plantPrice}br</span>
                         </div>
                         <div className="item-rating">
                           <span className="rating-badge">
@@ -60,7 +63,7 @@ const ShopPlantCategory = ({ plants }) => {
                       </div>
                     </div>
                     <div className="offer">
-                      <div className="percent">-25%</div>
+                      <div className="percent">{`${plant.plantLength}cm`}</div>
                     </div>
                   </div>
                 </div>

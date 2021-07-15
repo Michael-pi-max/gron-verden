@@ -42,7 +42,7 @@ function PlantList({ plantsId }) {
         <div
           style={{
             width: '100%',
-            height: '200px',
+            height: '100vh',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

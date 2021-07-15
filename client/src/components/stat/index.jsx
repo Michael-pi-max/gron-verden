@@ -15,19 +15,25 @@ const ShopStat = ({ totalPlants }) => {
               </strong>
             </li>
             <li className="mb-md-0 mb-3">
-              <strong className="d-block fwEbold counter mb-2">0</strong>
+              <strong className="d-block fwEbold counter mb-2">
+                {totalPlants === 0 ? 0 : `${Math.random().toFixed(1) * 10}`}
+              </strong>
               <strong className="d-block text-uppercase txtWrap">
                 Total sell
               </strong>
             </li>
             <li className="mb-md-0 mb-3">
-              <strong className="d-block fwEbold counter mb-2">22</strong>
+              <strong className="d-block fwEbold counter mb-2">
+                {totalPlants === 0 ? 0 : `${Math.random().toFixed(1) * 10}`}
+              </strong>
               <strong className="d-block text-uppercase txtWrap">
                 Happy Customers
               </strong>
             </li>
             <li className="mb-md-0 mb-3">
-              <strong className="d-block fwEbold counter mb-2">0</strong>
+              <strong className="d-block fwEbold counter mb-2">
+                {totalPlants === 0 ? 0 : `${Math.random().toFixed(1) * 10}`}
+              </strong>
               <strong className="d-block text-uppercase txtWrap">
                 Milestone
               </strong>

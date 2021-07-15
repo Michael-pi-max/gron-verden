@@ -1,6 +1,8 @@
 import { ShopActionTypes } from './types';
 import axios from 'axios';
 
+export let plantVariableGlobal;
+
 export const fetchShopsStart = () => ({
   type: ShopActionTypes.SHOPS_FETCH_START,
 });
@@ -113,6 +115,29 @@ export const updateShopError = (error) => ({
   payload: {
     error,
   },
+});
+
+// Identify Plant
+export const createIdentifyPlantStart = () => ({
+  type: ShopActionTypes.IDENTIFYPLANT_CREATE_START,
+});
+
+export const createIdentifyPlantSuccess = (shop) => ({
+  type: ShopActionTypes.IDENTIFYPLANT_CREATE_SUCCESS,
+  payload: {
+    shop,
+  },
+});
+
+export const createIdentifyPlantError = (error) => ({
+  type: ShopActionTypes.IDENTIFYPLANT_CREATE_ERROR,
+  payload: {
+    error,
+  },
+});
+
+export const clearCreateIdentifyPlantSuccess = () => ({
+  type: ShopActionTypes.CLEAR_IDENTIFYPLANT_CREATE_SUCCESS,
 });
 
 /**
@@ -254,6 +279,60 @@ export const updateShopAsync = (id, form) => {
       dispatch(updateShopSuccess(id, response.data.shop));
     } catch (err) {
       dispatch(updateShopError(err));
+    }
+  };
+};
+
+export const createIdentifyPlantAsync = (formFile) => {
+  return async (dispatch, getState) => {
+    const {
+      user: { user, token },
+    } = getState();
+
+    try {
+      dispatch(createIdentifyPlantStart());
+
+      const getBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (error) => reject(error);
+        });
+      };
+      const identifyPlants = [];
+      const identifyPlant = await getBase64(formFile);
+      identifyPlants.push(identifyPlant.slice(23));
+      // console.log(identifyPlants)
+
+      const data = {
+        api_key: 'OPqsAGXEmtJFsuYWjUn9GiTZCCYddcza0CzmljN5nOMIYbt3WK',
+        images: identifyPlants,
+        modifiers: ['crops_fast', 'similar_images'],
+        plant_language: 'en',
+        plant_details: [
+          'common_names',
+          'url',
+          'name_authority',
+          'wiki_description',
+          'taxonomy',
+          'synonyms',
+        ],
+      };
+
+      axios
+        .post('https://api.plant.id/v2/identify', data)
+        .then((res) => {
+          // dispatch(createIdentifyPlantSuccess(res.data.shop));
+          // console.log('Success:', res.data);
+          plantVariableGlobal = res.data;
+          console.log(plantVariableGlobal);
+        })
+        .catch((error) => {
+          console.error('Error: ', error);
+        });
+    } catch (err) {
+      dispatch(createIdentifyPlantError(err));
     }
   };
 };

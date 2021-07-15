@@ -20,9 +20,9 @@ const Intro = (props) => {
                         Solely for plants.
                       </span>
                     </h1>
-                    <p className="mb-xl-15 mb-lg-10">
+                    <h5 className="mb-xl-15 mb-lg-10">
                       A community to buy, sell and discover the magic of plants.
-                    </p>
+                    </h5>
                     <Link
                       to="/shops"
                       className="btn btnTheme btnShop fwEbold text-white md-round py-md-3 px-md-4 py-2 px-3"
@@ -52,22 +52,22 @@ const Intro = (props) => {
                 <div className="col-12 col-xl-7">
                   <div className="txtwrap pr-lg-10">
                     <span className="title d-block text-uppercase fwEbold position-relative pl-2 mb-lg-5 mb-sm-3 mb-1">
-                      wellcome to botanical
+                      welcome to Grøn Verden
                     </span>
                     <h2 className="fwEbold position-relative mb-xl-7 mb-lg-5">
                       Plants Gonna Make{' '}
                       <span className="text-break d-block">People Happy.</span>
                     </h2>
-                    <p className="mb-xl-15 mb-lg-10">
-                      Lorem ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </p>
-                    <a
-                      href="shop.html"
+                    <h5 className="mb-xl-15 mb-lg-10">
+                      Grøn Verden is more than about plants, it is a philosophy
+                      that permeates our ecosystem as a whole.
+                    </h5>
+                    <Link
+                      to="/shops"
                       className="btn btnTheme btnShop fwEbold text-white md-round py-2 px-3 py-md-3 px-md-4"
                     >
                       Shop Now <i className="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="imgHolder">
@@ -91,21 +91,21 @@ const Intro = (props) => {
                 <div className="col-12 col-xl-7">
                   <div className="txtwrap pr-lg-10">
                     <span className="title d-block text-uppercase fwEbold position-relative pl-2 mb-lg-5 mb-sm-3 mb-1">
-                      wellcome to botanical
+                      welcome to Grøn Verden
                     </span>
                     <h2 className="fwEbold position-relative mb-xl-7 mb-lg-5">
-                      Plants for healthy
+                      Plants for healthy life.
                     </h2>
-                    <p className="mb-xl-15 mb-lg-10">
-                      Lorem ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </p>
-                    <a
-                      href="shop.html"
+                    <h5 className="mb-xl-15 mb-lg-10">
+                      “The clearest way into the Universe is through a forest
+                      wilderness.” - <em>John Muir</em>
+                    </h5>
+                    <Link
+                      to="/shops"
                       className="btn btnTheme btnShop fwEbold text-white md-round py-2 px-3 py-md-3 px-md-4"
                     >
                       Shop Now <i className="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="imgHolder">

@@ -62,7 +62,7 @@ function ShopHeader(props) {
                     </li>
 
                     <li class="nav-item">
-                      <Link class="d-block" to="contact-us.html">
+                      <Link class="d-block" to="/gron">
                         Gron
                       </Link>
                     </li>
@@ -73,14 +73,6 @@ function ShopHeader(props) {
           </div>
           <div class="col-sm-3 col-lg-2">
             <ul class="nav nav-tabs wishListII pt-5 justify-content-end border-bottom-0">
-              <li class="nav-item">
-                <a
-                  class="nav-link position-relative icon-cart"
-                  href="javascript:void(0);"
-                >
-                  <span class="num rounded d-block">2</span>
-                </a>
-              </li>
               <li class="nav-item">
                 <Link class="nav-link icon-profile" to="/profile"></Link>
               </li>
