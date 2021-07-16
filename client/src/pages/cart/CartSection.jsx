@@ -8,7 +8,7 @@ const CartSection = (props) => {
   return (
     <div>
       <ShopHeader />
-      <ShopBanner />
+      <ShopBanner bannerTitle="Cart" />
       <CartBody />
       <Footer />
     </div>
