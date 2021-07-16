@@ -1,5 +1,5 @@
-import { ShopActionTypes } from "./types";
-import axios from "axios";
+import { ShopActionTypes } from './types';
+import axios from 'axios';
 export let plantVariableGlobal;
 
 export const fetchShopsStart = () => ({
@@ -173,7 +173,7 @@ export const fetchShopAsync = (id) => {
           },
         }
       );
-      
+
       dispatch(fetchShopSuccess(id, response.data.shop));
     } catch (err) {
       dispatch(fetchShopError(err));
@@ -184,13 +184,12 @@ export const fetchShopAsync = (id) => {
 export const createIdentifyPlantAsync = (formFile) => {
   return async (dispatch, getState) => {
     const {
-      user: { user,token },
+      user: { user, token },
     } = getState();
-   
+
     try {
-     
       dispatch(createIdentifyPlantStart());
-    
+
       const getBase64 = (file) => {
         return new Promise((resolve, reject) => {
           const reader = new FileReader();
@@ -205,27 +204,31 @@ export const createIdentifyPlantAsync = (formFile) => {
       // console.log(identifyPlants)
 
       const data = {
-        api_key: "OPqsAGXEmtJFsuYWjUn9GiTZCCYddcza0CzmljN5nOMIYbt3WK",
+        api_key: 'OPqsAGXEmtJFsuYWjUn9GiTZCCYddcza0CzmljN5nOMIYbt3WK',
         images: identifyPlants,
-        modifiers: ["crops_fast", "similar_images"],
-        plant_language: "en",
-        plant_details: ["common_names",
-            "url",
-            "name_authority",
-            "wiki_description",
-            "taxonomy",
-            "synonyms"]
-    };
-    
-    
-    axios.post('https://api.plant.id/v2/identify', data).then(res => {
-        // dispatch(createIdentifyPlantSuccess(res.data.shop));
-        // console.log('Success:', res.data);
-        plantVariableGlobal = res.data;
-        console.log(plantVariableGlobal);
-    }).catch(error => {
-        console.error('Error: ', error)
-    })
+        modifiers: ['crops_fast', 'similar_images'],
+        plant_language: 'en',
+        plant_details: [
+          'common_names',
+          'url',
+          'name_authority',
+          'wiki_description',
+          'taxonomy',
+          'synonyms',
+        ],
+      };
+
+      axios
+        .post('https://api.plant.id/v2/identify', data)
+        .then((res) => {
+          // dispatch(createIdentifyPlantSuccess(res.data.shop));
+          // console.log('Success:', res.data);
+          plantVariableGlobal = res.data;
+          console.log(plantVariableGlobal);
+        })
+        .catch((error) => {
+          console.error('Error: ', error);
+        });
     } catch (err) {
       dispatch(createIdentifyPlantError(err));
     }
@@ -234,24 +237,22 @@ export const createIdentifyPlantAsync = (formFile) => {
 
 // USER AND TOKEN COULD BE FIND SIMPLY
 export const createShopAsync = (formData) => {
-
   return async (dispatch, getState) => {
     const {
-      user: { user,token },
+      user: { user, token },
     } = getState();
-   
+
     try {
-      
       dispatch(createShopStart());
-    
+
       const response = await axios.post(
         `http://localhost:8000/api/v1/shops/new`,
         formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          }
+            'Content-Type': 'multipart/form-data',
+          },
         }
       );
       dispatch(createShopSuccess(response.data.shop));

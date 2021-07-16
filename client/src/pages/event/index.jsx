@@ -42,7 +42,7 @@ function EventSection(props) {
   return (
     <div>
       <ShopHeader />
-      <ShopBanner />
+      <ShopBanner bannerTitle="Event" />
       <EventCreate />
       {events.map((e) => {
         return (

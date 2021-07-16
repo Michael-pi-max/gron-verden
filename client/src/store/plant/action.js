@@ -1,5 +1,5 @@
-import { PlantActionTypes } from "./types";
-import axios from "axios";
+import { PlantActionTypes } from './types';
+import axios from 'axios';
 
 export const fetchPlantsStart = () => ({
   type: PlantActionTypes.PLANTS_FETCH_START,
@@ -149,7 +149,7 @@ export const fetchPlantAsync = (id) => {
           },
         }
       );
-      
+
       dispatch(fetchPlantSuccess(id, response.data.plant));
     } catch (err) {
       dispatch(fetchPlantError(err));
@@ -159,14 +159,12 @@ export const fetchPlantAsync = (id) => {
 
 // USER AND TOKEN COULD BE FIND SIMPLY
 export const createPlantAsync = (formData) => {
-
   return async (dispatch, getState) => {
     const {
-      user: { user,token },
+      user: { user, token },
     } = getState();
-  
+
     try {
-      
       dispatch(createPlantStart());
       const response = await axios.post(
         `http://localhost:8000/api/v1/plants/new`,
@@ -174,11 +172,12 @@ export const createPlantAsync = (formData) => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          }
+            'Content-Type': 'multipart/form-data',
+          },
         }
       );
       dispatch(createPlantSuccess(response.data.plant));
+      window.location.reload();
     } catch (err) {
       dispatch(createPlantError(err));
     }

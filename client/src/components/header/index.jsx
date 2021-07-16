@@ -17,7 +17,7 @@ const Header = (props) => {
     >
       <div className="container-fluid px-xl-17 px-lg-5 px-md-3 px-0 d-flex flex-wrap">
         <div className="col-6 col-sm-3 col-lg-2 order-sm-2 order-md-0 dis-none">
-          <ul className="nav nav-tabs langList pt-xl-6 pt-lg-4 pt-3 border-bottom-0">
+          {/* <ul className="nav nav-tabs langList pt-xl-6 pt-lg-4 pt-3 border-bottom-0">
             <li className="dropdown">
               <a
                 className="dropdown-toggle text-uppercase"
@@ -38,7 +38,7 @@ const Header = (props) => {
                 </a>
               </div>
             </li>
-          </ul>
+          </ul> */}
         </div>
         <div className="col-12 col-sm-6 col-lg-8 static-block">
           <div className="mainHolder justify-content-center">
@@ -130,7 +130,7 @@ const Header = (props) => {
               ) : (
                 <>
                   <div className="d-flex">
-                    <span className="mt-1" style={{ width: 180 }}>
+                    <span className="mt-1 border" style={{ width: 180 }}>
                       Hi, {user.firstName}
                     </span>
                     <button

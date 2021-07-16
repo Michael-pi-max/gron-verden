@@ -1,9 +1,8 @@
 import React from 'react';
 import { Form, Input, Button, Select } from 'antd';
 import { Upload, message, DatePicker } from 'antd';
-import { UploadOutlined, UserOutlined } from '@ant-design/icons';import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-
-
+import { UploadOutlined, UserOutlined } from '@ant-design/icons';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
@@ -15,23 +14,9 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-
-
-function ProfileForm(props) {
-    const [form] = Form.useForm();
-
-//   const onGenderChange = (value) => {
-//     switch (value) {
-//       case 'male':
-//         form.setFieldsValue({ note: 'Hi, man!' });
-//         return;
-//       case 'female':
-//         form.setFieldsValue({ note: 'Hi, lady!' });
-//         return;
-//       case 'other':
-//         form.setFieldsValue({ note: 'Hi there!' });
-//     }
-//   };
+function ProfileForm({user}) {
+  console.log(user)
+  const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log(values);
@@ -41,56 +26,47 @@ function ProfileForm(props) {
     form.resetFields();
   };
 
-
   return (
     <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
-      
-      <Form.Item name="firstName" label="First Name" rules={[{ required: true }]}>
-        <Input />
+      <Form.Item
+        name="firstName"
+        label="First Name"
+        rules={[{ required: true }]}
+      >
+        
+        <Input placeholder={user.firstName}/>
       </Form.Item>
       <Form.Item name="lastName" label="Last Name" rules={[{ required: true }]}>
-        <Input />
+        <Input placeholder={user.lastName}/>
       </Form.Item>
       <Form.Item name="userName" label="Username" rules={[{ required: true }]}>
         <Input
-            placeholder="Enter your username"
-            prefix={<UserOutlined className="site-form-item-icon" />}
-            />
-        </Form.Item>
+          placeholder={user.userName}
+          prefix={<UserOutlined className="site-form-item-icon" />}
+        />
+      </Form.Item>
 
-      <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
-        <Select
-          placeholder="Gender"
-          allowClear
-        >
-          <Option value="male">male</Option>
-          <Option value="female">female</Option>
-          <Option value="other">other</Option>
+      {/* <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
+        <Select placeholder={user.gender} allowClear>
+          <Option value="male">Male</Option>
+          <Option value="female">Female</Option>
         </Select>
-      </Form.Item>
-      <Form.Item name="dateOfBirth" label="DatePicker">
-          <DatePicker />
-        </Form.Item>
-      {/* <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) => prevValues.gender !== currentValues.gender}
-      >
-        {({ getFieldValue }) =>
-          getFieldValue('gender') === 'other' ? (
-            <Form.Item name="customizeGender" label="Customize Gender" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          ) : null
-        }
       </Form.Item> */}
-       <Form.Item name="email" label="Email" rules={[{ required: true }]}>
-        <Input />
+      {/* <Form.Item name="dateOfBirth" label="DatePicker">
+        <DatePicker className="w-100" placeholder={user.dateOfBirth}/>
+      </Form.Item> */}
+      <Form.Item name="email" label="Email" rules={[{ required: true }]}>
+        <Input placeholder={user.email}/>
       </Form.Item>
-      <Form.Item name="phoneNumber" label="Phone Number" rules={[{ required: true }]}>
-        <Input />
+      <Form.Item
+        name="phoneNumber"
+        label="Phone Number"
+        rules={[{ required: true }]}
+      >
+        <Input placeholder={user.phoneNumber}/>
       </Form.Item>
-       <Form.Item name="city" label="City" rules={[{ required: true }]}>
-        <Input />
+      <Form.Item name="city" label="City" rules={[{ required: true }]}>
+        <Input placeholder={user.city}/>
       </Form.Item>
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
@@ -99,7 +75,6 @@ function ProfileForm(props) {
         <Button htmlType="button" onClick={onReset}>
           Reset
         </Button>
-        
       </Form.Item>
     </Form>
   );

@@ -55,15 +55,19 @@ const MyShop = ({ shopsProp }) => {
 
   return (
     <>
-      <div class="row">
-        <header class="col-12 mainHeader mb-10 text-center">
-          <h1 class="headingIV playfair fwEblod mt-2">Store Name</h1>
-          <h1 class="headingIV playfair fwEblod mt-2">{myShop[0].shopName}</h1>
-          <h5 class="playfair fwEblod">Store Description</h5>
-          <p>{myShop[0].shopDescription}</p>
-        </header>
+      <div className="container">
+        <div class="row">
+          <header class="col-12 mainHeader mb-10 text-center">
+            <h1 class="headingIV playfair fwEblod mt-2">Store Name</h1>
+            <h1 class="headingIV playfair fwEblod mt-2">
+              {myShop[0].shopName}
+            </h1>
+            <h5 class="playfair fwEblod">Store Description</h5>
+            <p className="text-justify">{myShop[0].shopDescription}</p>
+          </header>
+        </div>
+        <PlantList plantsId={myShop[0].shopProducts.plants} />
       </div>
-      <PlantList plantsId={myShop[0].shopProducts.plants} />
     </>
   );
 };

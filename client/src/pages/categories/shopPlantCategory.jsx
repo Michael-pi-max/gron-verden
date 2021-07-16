@@ -38,8 +38,8 @@ const ShopPlantCategory = ({ plants }) => {
                       <h3 className="">
                         <Link
                           to={`/plants/${plant._id}`}
-                          className="item-name"
-                          style={{ color: '#E0E0E0' }}
+                          className="item-name font-weight-bold playfair"
+                          style={{ color: '#000000' }}
                         >
                           {plant.plantName}
                         </Link>

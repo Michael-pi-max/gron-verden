@@ -32,11 +32,11 @@ const ShopCategory = ({ shopsProp, user }) => {
                       </Link>
                     </div>
                     <div className="box-item-info">
-                      <h3 className="">
+                      <h3 className="bg-secondary">
                         <Link
                           to={`/shops/${shop._id}`}
-                          className="item-name"
-                          style={{ color: '#E0E0E0' }}
+                          className="item-name font-weight-bold"
+                          style={{ color: '#ffffff' }}
                         >
                           {shop.shopName}
                         </Link>

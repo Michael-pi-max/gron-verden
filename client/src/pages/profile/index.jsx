@@ -14,22 +14,26 @@ function Profile(props) {
   return (
     <>
       <ShopHeader />
-      <ShopBanner />
+      <ShopBanner bannerTitle="Profile" />
       <div className="row mt-5">
         <div className="offset-2"></div>
         <div className="col-3">
-          <div className="row">
-            <div className="col-12 mb-5">
-              <img src={`http://localhost:8000/${userObject.profilePicture}`} />
+          <div className="row text-center">
+            <div className="col-6 mb-5">
+              <img
+                style={{ width: 400 }}
+                src={`http://localhost:8000/${userObject.profilePicture}`}
+              />
             </div>
-            Event Participation ({userObject.events.length} events participated)
+            Event Participation ({userObject.events.length + 1} events
+            participated)
             <div className="col-12 mt-2">
-              <Progress type="circle" percent={userObject.events.length} />
+              <Progress type="circle" percent={userObject.events.length + 1} />
             </div>
           </div>
         </div>
         <div className="col-5">
-          <ProfileForm />
+          <ProfileForm user={userObject} />
         </div>
       </div>
       <Footer />

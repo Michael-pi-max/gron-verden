@@ -16,27 +16,6 @@ function ProductMain({ plants, plant }) {
                   class="img-fluid w-100"
                 />
               </div>
-              <div>
-                <img
-                  src="http://placehold.it/570x635"
-                  alt="image description"
-                  class="img-fluid w-100"
-                />
-              </div>
-              <div>
-                <img
-                  src="http://placehold.it/570x635"
-                  alt="image description"
-                  class="img-fluid w-100"
-                />
-              </div>
-              <div>
-                <img
-                  src="http://placehold.it/570x635"
-                  alt="image description"
-                  class="img-fluid w-100"
-                />
-              </div>
             </div>
           </div>
           <div class="col-12 col-lg-6 order-lg-3">
@@ -72,68 +51,20 @@ function ProductMain({ plants, plant }) {
               <strong class="price d-block mb-5 text-green">
                 {plant.plantPrice}br
               </strong>
-              <p class="mb-5">{plant.plantDescription}</p>
+              <p class="mb-5">{plant.plantDescription.slice(0, 100)}...</p>
               <ul class="list-unstyled productInfoDetail mb-5 overflow-hidden">
                 <li class="mb-2">
-                  Product Type: <span>{plant.plantType}</span>
+                  Product type: <span>{plant.plantType}</span>
                 </li>
                 <li class="mb-2">
-                  Quantity: <span>68 Items</span>
+                  Plant length: <span>{plant.plantLength}cm</span>
                 </li>
                 <li class="mb-2">
-                  Shipping tax: <span>Free</span>
+                  Plant price: <span>{plant.plantPrice}br</span>
                 </li>
               </ul>
-              {/* <ul class="list-unstyled sizeList d-flex flex-wrap mb-4">
-                            <li class="text-uppercase mr-6">Size:</li>
-                            <li class="mr-2">
-                                <label for="check-1">
-                                    <input id="check-1" checked="checked" type="checkbox"/>
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">L</span>
-                                </label>
-                            </li>
-                            <li class="mr-2">
-                                <label for="check-2">
-                                    <input id="check-2" type="checkbox"/>
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">M</span>
-                                </label>
-                            </li>
-                            <li class="mr-2">
-                                <label for="check-3">
-                                    <input id="check-3" type="checkbox"/>
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">S</span>
-                                </label>
-                            </li>
-                            <li class="mr-2">
-                                <label for="check-4">
-                                    <input id="check-4" type="checkbox"/>
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">XL</span>
-                                </label>
-                            </li>
-                            <li class="mr-2">
-                                <label for="check-5">
-                                    <input id="check-5" type="checkbox"/>
-                                    <span class="fake-input"></span>
-                                    <span class="fake-label">XXL</span>
-                                </label>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled colorList d-flex flex-wrap mb-8">
-                            <li class="text-uppercase mr-2">Color:</li>
-                            <li class="mr-3"><a href="javascript:void(0);" class="red rounded"></a></li>
-                            <li class="mr-3"><a href="javascript:void(0);" class="yellow rounded"></a></li>
-                            <li class="mr-3"><a href="javascript:void(0);" class="purple rounded"></a></li>
-                        </ul>
-    */}
-              {/* <div class="holder overflow-hidden d-flex flex-wrap mb-6">
-                            <input type="number" placeholder="1"/>
-                            <a href="javascript:void(0);" class="btn btnTheme btnShop fwEbold text-white md-round py-3 px-4 py-md-3 px-md-4">Add To Cart <i class="fas fa-arrow-right ml-2"></i></a>
-                        </div> */}
-              <ul class="list-unstyled socialNetwork d-flex flex-wrap mb-sm-11 mb-4">
+
+              {/* <ul class="list-unstyled socialNetwork d-flex flex-wrap mb-sm-11 mb-4">
                 <li class="text-uppercase mr-5">SHARE THIS PRODUCT:</li>
                 <li class="mr-4">
                   <a href="javascript:void(0);" class="fab fa-facebook-f"></a>
@@ -151,12 +82,13 @@ function ProductMain({ plants, plant }) {
                   <a href="javascript:void(0);" class="fab fa-pinterest-p"></a>
                 </li>
               </ul>
+               */}
               <ul class="list-unstyled productInfoDetail mb-0">
                 {/* <li class="mb-2">Categories: <a href="javascript:void(0);">Butter &amp; Eggs,</a> <a href="javascript:void(0);">Fruits,</a> <a href="javascript:void(0);">Milk &amp; Cream,</a> <a href="javascript:void(0);">Vegetables</a></li> */}
                 <li class="mb-2">
-                  Tags: <a href="javascript:void(0);">organic food,</a>{' '}
-                  <a href="javascript:void(0);">fruits,</a>{' '}
-                  <a href="javascript:void(0);">juice</a>
+                  Tags: <a href="javascript:void(0);">{plant.plantType}</a>{' '}
+                  <a href="javascript:void(0);">plants</a>{' '}
+                  <a href="javascript:void(0);"></a>
                 </li>
                 {/* <li>Brand: <a href="javascript:void(0);">KFC</a></li> */}
               </ul>
@@ -218,38 +150,7 @@ function ProductMain({ plants, plant }) {
             </ul>
             <div class="tab-content mb-xl-11 mb-lg-10 mb-md-8 mb-5">
               <div id="tab1-0" class="active">
-                <p>
-                  Aenean id ullamcorper libero. Vestibulum imperdiet nibh. Lorem
-                  ullamcorper volutpat. Vestibulum lacinia risus. Etiam sagittis
-                  ullamcorper volutpat. Vestibulum lacinia risus sed ligula
-                  malesuada volutpat.Pellentesque habitant morbi tristique
-                  senectus et netus et malesuada fames ac turpis egestas.
-                  Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
-                  sit amet, ante. Donec eu libero sit amet quam egestas semper.
-                  Aenean ultricies mi vitae est. Mauris placerat eleifend leo
-                  Pellentesque habitant morbi tristique senectus et netus et
-                  malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                  feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
-                  libero sit amet quam egestas semper. Aenean ultricies mi vitae
-                  est. Mauris placerat eleifend leo.
-                </p>
-              </div>
-              <div id="tab2-0">
-                <p>
-                  Aenean id ullamcorper libero. Vestibulum imperdiet nibh. Lorem
-                  ullamcorper volutpat. Vestibulum lacinia risus. Etiam sagittis
-                  ullamcorper volutpat. Vestibulum lacinia risus sed ligula
-                  malesuada volutpat.Pellentesque habitant morbi tristique
-                  senectus et netus et malesuada fames ac turpis egestas.
-                  Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
-                  sit amet, ante. Donec eu libero sit amet quam egestas semper.
-                  Aenean ultricies mi vitae est. Mauris placerat eleifend leo
-                  Pellentesque habitant morbi tristique senectus et netus et
-                  malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                  feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
-                  libero sit amet quam egestas semper. Aenean ultricies mi vitae
-                  est. Mauris placerat eleifend leo.
-                </p>
+                <p>{plant.plantDescription}</p>
               </div>
             </div>
           </div>
@@ -271,7 +172,7 @@ function ProductMain({ plants, plant }) {
                     <div class="border">
                       <div class="imgHolder position-relative w-100 overflow-hidden">
                         <img
-                          src={`http://localhost:8000/${plant.plantImage}`}
+                          src={`http://localhost:8000/${p.plantImage}`}
                           alt="image description"
                           class="img-fluid w-100"
                         />
@@ -289,7 +190,10 @@ function ProductMain({ plants, plant }) {
                             ></a>
                           </li>
                           <li class="mr-2 overflow-hidden">
-                            <Link to="/product" class="icon-eye d-block"></Link>
+                            <Link
+                              to={`/product/${p._id}`}
+                              class="icon-eye d-block"
+                            ></Link>
                           </li>
                           <li class="overflow-hidden">
                             <a
@@ -300,11 +204,11 @@ function ProductMain({ plants, plant }) {
                         </ul>
                       </div>
                       <div class="text-center py-5 px-4">
-                        <span class="title d-block mb-2">
+                        <span class="title d-block mb-2 fwEbold">
                           <Link to="/product">{p.plantName}</Link>
                         </span>
                         <span class="price d-block fwEbold">
-                          <del>80.50 $</del> {p.plantPrice} br
+                          Price {p.plantPrice} br
                         </span>
                         <span class="hotOffer green fwEbold text-uppercase text-white position-absolute d-block">
                           Sale

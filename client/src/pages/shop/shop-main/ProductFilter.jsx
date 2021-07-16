@@ -26,27 +26,27 @@ function ProductFilter(props) {
           <ul class="list-unstyled categoryList mb-0">
             <li class="mb-5 overflow-hidden">
               <a href="javascript:void(0);">
-                Table Tree Plants <span class="num border float-right">6</span>
+                Table Tree Plants <span class="num border float-right"></span>
               </a>
             </li>
             <li class="mb-5 overflow-hidden">
               <a href="javascript:void(0);">
-                Indoor Plant <span class="num border float-right">8</span>
+                Indoor Plant <span class="num border float-right"></span>
               </a>
             </li>
             <li class="mb-4 overflow-hidden">
               <a href="javascript:void(0);">
-                Office Plant <span class="num border float-right">9</span>
+                Office Plant <span class="num border float-right"></span>
               </a>
             </li>
             <li class="mb-5 overflow-hidden">
               <a href="javascript:void(0);">
-                House Plant <span class="num border float-right">6</span>
+                House Plant <span class="num border float-right"></span>
               </a>
             </li>
             <li class="overflow-hidden">
               <a href="javascript:void(0);">
-                Cactus Plant <span class="num border float-right">1</span>
+                Cactus Plant <span class="num border float-right"></span>
               </a>
             </li>
           </ul>

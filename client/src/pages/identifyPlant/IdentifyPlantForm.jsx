@@ -7,6 +7,9 @@ import {
   Select,
   Upload,
   Modal,
+  Row,
+  Col,
+  Space,
   message,
   DatePicker,
 } from 'antd';
@@ -104,13 +107,20 @@ function IdentifyPlantForm(props) {
 
   return (
     <>
-      <div>
+      <div className="container card my-1 py-2">
         <Form
           {...layout}
           form={identifyPlantFormInstance}
           name="control-hooks"
           onFinish={onFinish}
         >
+          {' '}
+          <h1 className="text-center playfair">Upload an image</h1>
+          <p className="text-center playfair font-weight-bold">
+            Here is our plant detection part... you can upload and find a better
+            knowledge and data about the plant. <br /> Explore and find out
+            more.
+          </p>
           <Form.Item name="identifyPlant" label="Identify Plant">
             <Upload
               listType="picture-card"
@@ -143,25 +153,28 @@ function IdentifyPlantForm(props) {
             src={preview.previewImage}
           />
         </Modal>
+
         <div className="container mt-2">
-          {plantVariableGlobal &&
-            plantVariableGlobal.suggestions.map((p) => {
-              console.log(p);
-              console.log(p.probability);
-              console.log(p.plant_details.wiki_description.value);
-              console.log(p.similar_images[0].similarity.toFixed(2));
-              return (
-                <IdentifyPlantCard
-                  image={p.similar_images[0].url}
-                  scientificName={p.plant_name}
-                  url={p.plant_details.url}
-                  wikiDescription={p.plant_details.wiki_description.value}
-                  similarProbability={
-                    p.similar_images[0].similarity.toFixed(2) * 100
-                  }
-                />
-              );
-            })}
+          <Row>
+            {plantVariableGlobal &&
+              plantVariableGlobal.suggestions.map((p) => {
+                return (
+                  <>
+                    <Col className="mb-2" span={8}>
+                      <IdentifyPlantCard
+                        image={p.similar_images[0].url}
+                        scientificName={p.plant_name}
+                        url={p.plant_details.url}
+                        wikiDescription={p.plant_details.wiki_description.value}
+                        similarProbability={
+                          p.similar_images[0].similarity.toFixed(2) * 100
+                        }
+                      />
+                    </Col>
+                  </>
+                );
+              })}
+          </Row>
         </div>
       </div>
     </>

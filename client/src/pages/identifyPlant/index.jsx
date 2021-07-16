@@ -10,7 +10,7 @@ function IdentifyPlant(props) {
   return (
     <div>
       <ShopHeader />
-      <ShopBanner />
+      <ShopBanner bannerTitle="Plant Detection AI"/>
       {/* One time ???? */}
       <IdentifyPlantForm />
       {/* <div className="container">

@@ -57,7 +57,7 @@ function Product(props) {
   return (
     <div id="pageWrapper">
       <ShopHeader />
-      <ShopBanner />
+      <ShopBanner bannerTitle="Plant Details" />
       <ProductMain plant={plant[0]} plants={plants} />
       <Footer />
     </div>
